@@ -1,4 +1,4 @@
-# 🔐 one-time-secret-share
+# 🔐 one-time-secret-share - [![CI - One-Time Secret Share](https://github.com/JuanFontes/one-time-secret-share/actions/workflows/ci.yml/badge.svg)](https://github.com/JuanFontes/one-time-secret-share/actions/workflows/ci.yml)
 
 A lightweight, one-time secret sharing app built with Flask — fully Dockerized and ready to deploy! Share sensitive messages securely, once and only once. 🔥
 
