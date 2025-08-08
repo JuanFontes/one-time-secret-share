@@ -9,7 +9,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Initialize Fernet encryption using the secret key from .env
-fernet = Fernet(os.environ["SECRET_KEY"])
+FERNET_KEY = os.getenv("SECRET_KEY") or Fernet.generate_key()
+fernet = Fernet(FERNET_KEY)
 
 # SQLite database filename
 DB_NAME = "secrets.db"

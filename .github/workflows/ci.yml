@@ -23,10 +23,6 @@ jobs:
         run: |
           docker compose version
 
-      - name: 🗝️ Generate Fernet key
-        run: |
-          echo "SECRET_KEY=$(python -c 'from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())')" >> $GITHUB_ENV
-
       - name: 🧪 Run tests with Docker Compose
         run: |
           docker compose build
