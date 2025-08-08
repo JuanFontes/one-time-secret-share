@@ -139,4 +139,3 @@ See the [LICENSE](LICENSE) file for more information.
 ## 🤝 Contributing
 
 Pull requests are welcome! Open an issue for feature requests or bugs.
-
