@@ -14,6 +14,7 @@ fernet = Fernet(os.environ["SECRET_KEY"])
 # SQLite database filename
 DB_NAME = "secrets.db"
 
+
 def init_db():
     """
     Initializes the SQLite database.
@@ -21,15 +22,18 @@ def init_db():
     """
     with sqlite3.connect(DB_NAME) as conn:
         c = conn.cursor()
-        c.execute("""
+        c.execute(
+            """
             CREATE TABLE IF NOT EXISTS secrets (
                 id TEXT PRIMARY KEY,          -- UUID key
                 secret TEXT NOT NULL,         -- Encrypted secret text
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 expires_at DATETIME           -- Expiration time (UTC)
             );
-        """)
+        """
+        )
         conn.commit()
+
 
 def save_secret(secret_text, expire_minutes):
     """
@@ -53,11 +57,12 @@ def save_secret(secret_text, expire_minutes):
         c = conn.cursor()
         c.execute(
             "INSERT INTO secrets (id, secret, expires_at) VALUES (?, ?, ?)",
-            (key, encrypted_secret, expires_at.isoformat())
+            (key, encrypted_secret, expires_at.isoformat()),
         )
         conn.commit()
 
     return key
+
 
 def get_and_delete_secret(key):
     """

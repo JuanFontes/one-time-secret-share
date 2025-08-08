@@ -7,6 +7,7 @@ app = Flask(__name__)
 # Initialize SQLite database (creates table if not exists)
 init_db()
 
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     """
@@ -22,11 +23,13 @@ def index():
         "1": "1 minute",
         "10": "10 minutes",
         "60": "1 hour",
-        "1440": "1 day"
+        "1440": "1 day",
     }
     if request.method == "POST":
         secret = request.form.get("secret")  # Text from textarea
-        expire_value = request.form.get("expire", "10")  # Expiration dropdown (default 10 minutes)
+        expire_value = request.form.get(
+            "expire", "10"
+        )  # Expiration dropdown (default 10 minutes)
         expire_minutes = int(expire_value)  # Convert to integer
 
         # Save the encrypted secret and get the unique key
@@ -37,7 +40,9 @@ def index():
         expire_label = expire_labels.get(expire_value, f"{expire_minutes} minutes")
 
     # Render the page, optionally showing the generated URL
-    return render_template("index.html", secret_url=secret_url, expire_label=expire_label)
+    return render_template(
+        "index.html", secret_url=secret_url, expire_label=expire_label
+    )
 
 
 @app.route("/secret/<key>")
