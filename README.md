@@ -98,7 +98,7 @@ docker run -p 5000:5000 one-time-secret-share
 ## 🐙 Run with Docker Compose
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 Then open: [http://localhost:5000](http://localhost:5000)
